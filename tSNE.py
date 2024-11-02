@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os 
 from PIL import Image
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report, fbeta_score, balanced_accuracy_score
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
