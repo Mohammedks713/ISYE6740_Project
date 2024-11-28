@@ -19,6 +19,8 @@ from sklearn.metrics import mean_squared_error
 from scipy.spatial.distance import pdist, squareform
 from scipy.sparse.csgraph import connected_components
 from sklearn.neighbors import kneighbors_graph
+import seaborn as sns
+
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -153,11 +155,14 @@ plt.legend()
 plt.colorbar(scatter, label='True Labels')
 plt.savefig("kNN Predictions vs True Labels_PCA.png")
 
+plt.figure()
 cm = confusion_matrix(y_test2, y_pred_pca)
+class_labels = ['glioma', 'meningioma', 'pituitary', 'notumor']
 
-disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-disp.plot(cmap='Blues')
-plt.title("Confusion Matrix PCA")
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_labels, yticklabels=class_labels)
+plt.xlabel('Predicted Labels')
+plt.ylabel('True Labels')
+plt.title('Confusion Matrix for kNN with PCA')
 plt.savefig("confusion matrix_PCA.png")
 
 
